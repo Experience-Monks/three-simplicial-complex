@@ -14,7 +14,7 @@ var normalize = require('normalize-path-scale')
 var bounds = null
 
 module.exports = function(path) {
-    var mesh2d = Stroke({ thickness: 15, join: 'bevel' }).build(path)
+    var mesh2d = Stroke({ thickness: 15, join: 'miter' }).build(path)
 
     //normalize
     mesh2d.positions = normalize(mesh2d.positions)
