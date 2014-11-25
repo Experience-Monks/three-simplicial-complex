@@ -1,0 +1,45 @@
+{
+  "name": "three-simplicial-complex",
+  "version": "1.0.0",
+  "description": "render simplicial complexes with ThreeJS",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Matt DesLauriers",
+    "email": "dave.des@gmail.com",
+    "url": "https://github.com/mattdesl"
+  },
+  "dependencies": {
+    "inherits": "^2.0.1"
+  },
+  "devDependencies": {
+    "adaptive-bezier-curve": "^1.0.3",
+    "domready": "^1.0.7",
+    "extrude-polyline": "^1.0.1",
+    "getboundingbox": "^1.0.0",
+    "normalize-path-scale": "^1.1.1",
+    "parse-svg-path": "^0.1.1",
+    "scriptjs": "^2.5.7",
+    "simplify-path": "^1.0.1",
+    "svg-path-contours": "^1.0.1",
+    "three": "^0.69.0",
+    "three-orbit-viewer": "^69.2.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "three",
+    "bunny",
+    "simplicial",
+    "complex"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mattdesl/three-simplicial-complex.git"
+  },
+  "homepage": "https://github.com/mattdesl/three-simplicial-complex",
+  "bugs": {
+    "url": "https://github.com/mattdesl/three-simplicial-complex/issues"
+  }
+}
