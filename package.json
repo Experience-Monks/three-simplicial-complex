@@ -1,6 +1,6 @@
 {
   "name": "three-simplicial-complex",
-  "version": "1.0.0",
+  "version": "69.0.0",
   "description": "render simplicial complexes with ThreeJS",
   "main": "index.js",
   "license": "MIT",
@@ -13,15 +13,10 @@
     "inherits": "^2.0.1"
   },
   "devDependencies": {
-    "adaptive-bezier-curve": "^1.0.3",
+    "array-range": "^1.0.1",
     "domready": "^1.0.7",
     "extrude-polyline": "^1.0.1",
-    "getboundingbox": "^1.0.0",
-    "normalize-path-scale": "^1.1.1",
-    "parse-svg-path": "^0.1.1",
-    "scriptjs": "^2.5.7",
-    "simplify-path": "^1.0.1",
-    "svg-path-contours": "^1.0.1",
+    "icosphere": "^1.0.0",
     "three": "^0.69.0",
     "three-orbit-viewer": "^69.2.0"
   },

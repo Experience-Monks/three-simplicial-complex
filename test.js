@@ -3,19 +3,22 @@ require('domready')(run)
 var THREE = require('three')
 var Complex = require('./')(THREE)
 var OrbitViewer = require('three-orbit-viewer')(THREE)
-var meshify = require('./line-mesh')
 
-// var curve = require('adaptive-bezier-curve')
-// var path = curve([20, 20], [20, 100], [200, 100], [200, 20], 7)
-// path = curve([150, 152], [50, 150], [25, 150], [100, 100], 7, path)
+//generating 
+var icosphere = require('icosphere')(0)
 
-var parse = require('parse-svg-path')
-var contours = require('svg-path-contours')
-var contents = require('./test/infinity.json')
-var simplify = require('simplify-path')
+//to build our thick bezier curve 
+var stroke = require('extrude-polyline')({ 
+    thickness: 0.15, 
+    join: 'bevel'
+})
 
-var path = simplify(contours(parse(contents), 7)[6], 0.15).slice(1)
-path.unshift(path[path.length-2])
+//get a straight line of N points between [-X ... X] 
+var array = require('array-range')
+var path = array(100).map(function(e, i, list) {
+    var a = (i/(list.length-1))*2-1
+    return [a * 1.5, 0]
+})
 
 function run() {
     var app = OrbitViewer({
@@ -25,26 +28,51 @@ function run() {
         position: new THREE.Vector3(1, 1, -2)
     })
 
-    var mesh = meshify(path)
-    var geo = Complex(mesh)
-    geo.computeFaceNormals()
+    var lineMesh = meshify(path)
+    var lineGeo = Complex(lineMesh)
 
-    var mat = new THREE.MeshLambertMaterial({ 
-        wireframe: false, 
-        side: THREE.DoubleSide, 
-        color: 0xffffff 
+    //extrude-polyline doesn't use consistent face winding,
+    //so we need to specify DoubleSide !
+    var mat = new THREE.MeshBasicMaterial({ 
+        side: THREE.DoubleSide
     })
-    var box = new THREE.Mesh(geo, mat)
-    app.scene.add(box)
-    
-    var light = new THREE.PointLight( 0x3f7aac, 1, 1000 );
-    light.position.set( 1, 1, 1 );
-    app.scene.add( light );
+
+    //make a mesh our of the geometry
+    var line = new THREE.Mesh(lineGeo, mat)
+    line.scale.multiplyScalar(0.4)
+    app.scene.add(line)
+
+    //surround the line with another complex
+    var sphere = Complex(icosphere)
+    var sphereMesh = new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ 
+        wireframe: true, 
+        transparent: true,
+        opacity: 0.25
+    }))
+    app.scene.add(sphereMesh)
 
     var time = 0
     app.on('tick', function(dt) {
-        time += dt/1000 
+        time += dt/1000
 
-        // box.rotation.y = (Math.sin(time)/2+0.5) * Math.PI
+        var angle = Math.sin(time)*2.5
+
+        //modify our original 2D path
+        path.forEach(function(p, i, list) {
+            var a = i/(list.length)*2-1
+            p[1] = Math.sin(angle*a*5)
+        })
+
+        //get a new 3D complex and update our buffers
+        lineGeo.update(meshify(path))
     })
+}
+
+//turns a 2D path into an indexed 3D mesh
+function meshify(path) {
+    var mesh2d = stroke.build(path)
+    mesh2d.positions = mesh2d.positions.map(function(p) {
+        return [p[0], p[1], p[2]||0]
+    })
+    return mesh2d
 }
