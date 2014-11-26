@@ -14,17 +14,22 @@ module.exports = function(THREE) {
 
     inherits(Complex, THREE.Geometry)
 
-    Complex.prototype.update = function(mesh) {
-        for (var i=0; i<mesh.positions.length; i++) {
-            var pos = mesh.positions[i]
+    //may expose these in next version
+    Complex.prototype._updatePositions = function(positions) {
+        for (var i=0; i<positions.length; i++) {
+            var pos = positions[i]
             if (i > this.vertices.length-1)
                 this.vertices.push(new THREE.Vector3().fromArray(pos))
             else 
                 this.vertices[i].fromArray(pos)
         }
+        this.vertices.length = positions.length
+        this.verticesNeedUpdate = true
+    }
 
-        for (i=0; i<mesh.cells.length; i++) {
-            var face = mesh.cells[i]
+    Complex.prototype._updateCells = function(cells) {
+        for (var i=0; i<cells.length; i++) {
+            var face = cells[i]
             if (i > this.faces.length-1)
                 this.faces.push(new THREE.Face3(face[0], face[1], face[2]))
             else {
@@ -35,10 +40,13 @@ module.exports = function(THREE) {
             }
         }
 
-        this.vertices.length = mesh.positions.length
-        this.faces.length = mesh.cells.length
+        this.faces.length = cells.length
         this.elementsNeedUpdate = true
-        this.verticesNeedUpdate = true
+    }
+
+    Complex.prototype.update = function(mesh) {
+        this._updatePositions(mesh.positions)
+        this._updateCells(mesh.cells)
     }
 
     return Complex

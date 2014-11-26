@@ -19,7 +19,7 @@ This is useful for inter-op with modules like [icosphere](https://www.npmjs.org/
 
 #### `geo = Complex([mesh])`
 
-Creates a new THREE.Geometry with the given complex (optional). 
+Creates a new THREE.Geometry with the given complex (optional), where `mesh` contains `{ positions, cells }`.
 
 #### `geo.update(mesh)`
 
