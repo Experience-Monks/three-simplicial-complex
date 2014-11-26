@@ -2,6 +2,8 @@
 
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
+![img](http://i.imgur.com/HXFvCyE.png)
+
 Creates a THREE.Geometry from a 3D simplicial complex. 
 
 ```js
