@@ -4,7 +4,7 @@
 
 ![img](http://i.imgur.com/HXFvCyE.png)
 
-Creates a THREE.Geometry from a 3D simplicial complex. 
+Creates a THREE.Geometry from a 3D simplicial complex. See [demo](test.js) for an example.
 
 ```js
 var mesh = {
