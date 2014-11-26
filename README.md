@@ -25,6 +25,10 @@ Creates a new THREE.Geometry with the given complex (optional), where `mesh` con
 
 Updates the THREE.Geometry with the new simplicial complex.
 
+#### Versioning
+
+This uses an unusual versioning system to better support ThreeJS's (lack of) versioning. The major version of this repo will line up with ThreeJS releases (`69.0.0` => `r69`). The minor will be reserved for any new features, and patch for bug fixes and documentation/readme updates. In some rare cases, a minor feature may introduce a breaking change; so it's generally safest to use tilde or `save-exact` for this module.
+
 ## License
 
 MIT, see [LICENSE.md](http://github.com/mattdesl/three-simplicial-complex/blob/master/LICENSE.md) for details.
