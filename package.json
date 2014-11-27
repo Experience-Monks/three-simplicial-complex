@@ -18,7 +18,7 @@
     "extrude-polyline": "^1.0.1",
     "icosphere": "^1.0.0",
     "three": "^0.69.0",
-    "three-orbit-viewer": "^69.2.0"
+    "three-orbit-viewer": "^69.2.1"
   },
   "scripts": {
     "test": "node test.js"
