@@ -1,6 +1,6 @@
 {
   "name": "three-simplicial-complex",
-  "version": "69.0.3",
+  "version": "69.0.4",
   "description": "render simplicial complexes with ThreeJS",
   "main": "index.js",
   "license": "MIT",
