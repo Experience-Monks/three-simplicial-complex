@@ -7,10 +7,16 @@
 Creates a THREE.Geometry from a 3D simplicial complex. See [demo](test.js) for an example.
 
 ```js
+var Complex = require('three-simplicial-complex')(THREE)
+
 var mesh = {
     positions: [ [25,25,25], [15,15,25], [50,50,25], [15,15,15], ... ],
     cells: [ [0,1,2], [1,3,2], ...]
 }
+
+var complex = Complex(mesh)
+complex.position.x = 2
+scene.add(complex)
 ```
 
 This is useful for inter-op with modules like [icosphere](https://www.npmjs.org/package/icosphere), [bunny](https://www.npmjs.org/package/bunny), [stanford-dragon](https://www.npmjs.org/package/stanford-dragon), [mesh-combine](https://www.npmjs.org/package/mesh-combine), [extrude-polyline](https://www.npmjs.org/package/extrude-polyline), [teapot](https://www.npmjs.org/package/teapot), [triangulate-contours](https://www.npmjs.org/package/triangulate-contours), etc.
