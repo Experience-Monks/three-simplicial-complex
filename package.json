@@ -31,10 +31,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/mattdesl/three-simplicial-complex.git"
+    "url": "git://github.com/Jam3/three-simplicial-complex.git"
   },
-  "homepage": "https://github.com/mattdesl/three-simplicial-complex",
+  "homepage": "https://github.com/Jam3/three-simplicial-complex",
   "bugs": {
-    "url": "https://github.com/mattdesl/three-simplicial-complex/issues"
+    "url": "https://github.com/Jam3/three-simplicial-complex/issues"
   }
 }

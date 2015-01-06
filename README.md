@@ -39,4 +39,4 @@ This uses an unusual versioning system to better support ThreeJS's (lack of) ver
 
 ## License
 
-MIT, see [LICENSE.md](http://github.com/mattdesl/three-simplicial-complex/blob/master/LICENSE.md) for details.
+MIT, see [LICENSE.md](http://github.com/Jam3/three-simplicial-complex/blob/master/LICENSE.md) for details.
