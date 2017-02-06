@@ -14,9 +14,10 @@ var mesh = {
     cells: [ [0,1,2], [1,3,2], ...]
 }
 
-var complex = Complex(mesh)
-complex.position.x = 2
-scene.add(complex)
+var geo = Complex(mesh)
+var threeMesh = new THREE.Mesh(geo,new THREE.MeshBasicMaterial())
+threeMesh.position.x = 2
+scene.add(threeMesh)
 ```
 
 This is useful for inter-op with modules like [icosphere](https://www.npmjs.org/package/icosphere), [bunny](https://www.npmjs.org/package/bunny), [stanford-dragon](https://www.npmjs.org/package/stanford-dragon), [mesh-combine](https://www.npmjs.org/package/mesh-combine), [extrude-polyline](https://www.npmjs.org/package/extrude-polyline), [teapot](https://www.npmjs.org/package/teapot), [triangulate-contours](https://www.npmjs.org/package/triangulate-contours), etc.
